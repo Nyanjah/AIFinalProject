@@ -5,7 +5,7 @@ class TicTacToe:
         self.in_progress = True
         # [3x3] grid of entries which take on the following values:
         #  Player 1   -> -1
-        #  Empty Spot -> 0
+        #  Empty Spot ->  0
         #  Player 2   -> +1
         self.mapping = {"-1":"X", '1': "O", "0" :" "}
         self.board = [[0,0,0],[0,0,0],[0,0,0]]
