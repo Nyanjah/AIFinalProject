@@ -1,6 +1,9 @@
 # Game AI
 This is a command line tool to play games against AI or train AI to play games.
-Currently supported games are Tic Tac Toe, Connect 4, and Battleship.
+This is a (WIP) final project as part of the spring 2023 CMPSC 442 course at Pennsylvania State University,
+belonging to the second group given the topic of "AI & PLAY".
+Currently tic-tac-toe is the only supported game.
+This project will eventually also support connect 4 and battleship.
 
 ## Usage
 To use the tool, navigate to the root directory of the project and run the `gameAI.py` file with the following options:
