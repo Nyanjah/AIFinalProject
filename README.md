@@ -13,13 +13,16 @@ To use the tool, navigate to the root directory of the project and run the `game
 - `--play`: Play against the AI of the chosen game.
 - `--epochs`: (Optional) Number of epochs to train over. Default is 10.
 
-For example, to train a Tic Tac Toe AI model for 50 epochs, run the following command:
+
 
 ## Example
 To play Tic Tac Toe against the trained AI, run the following command:
 
-- 'python gameAI.py --game tictactoe --play'
+`py gameAI.py --game tictactoe --play`
 
+To train a Tic Tac Toe AI model for 50 epochs:
+
+`py gameAI.py --game tictactoe --train 50`
 
 ## Future Expansion
 Placeholder code has been included in the main.py script to support Connect 4 and Battleship games. To use these games, uncomment the necessary import statements and code blocks.
