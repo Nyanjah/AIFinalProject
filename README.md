@@ -24,7 +24,7 @@ py gameAI.py --game tictactoe --play
 
 To train a Tic Tac Toe AI model for 50 epochs:
 ```
-py gameAI.py --game tictactoe --train 50
+py gameAI.py --game tictactoe --train --epoch 50
 ```
 ## Future Expansion
 Placeholder code has been included in the main.py script to support Connect 4 and Battleship games. To use these games, uncomment the necessary import statements and code blocks.
