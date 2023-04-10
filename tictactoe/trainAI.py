@@ -1,6 +1,6 @@
 import tensorflow as tf
 import numpy as np
-from tictactoe.tictactoe import *
+from tictactoe.game import *
 from tqdm import tqdm
 
 def train_model(epochs):
@@ -8,10 +8,12 @@ def train_model(epochs):
     game = TicTacToe()
 
     # Define the model using TensorFlow
+    #                  (ReLu)          (ReLu)          (SoftMax)                 
+    # 3x3 Input -> 32 node layer -> 32 node layer -> 9 output nodes
     model = tf.keras.Sequential([
         tf.keras.layers.Flatten(input_shape=(3, 3)),
-        tf.keras.layers.Dense(64, activation='relu'),
-        tf.keras.layers.Dense(64, activation='relu'),
+        tf.keras.layers.Dense(32, activation='relu'),
+        tf.keras.layers.Dense(32, activation='relu'),
         tf.keras.layers.Dense(9, activation='softmax')
     ])
 
@@ -30,7 +32,6 @@ def train_model(epochs):
         # Initialize the game state and reward
         state = np.array(game.board)
         reward = 0
-
         # Loop through the game until it ends
         while game.in_progress:
             # Choose a move based on the current state
@@ -42,12 +43,12 @@ def train_model(epochs):
 
             # Play the move and update the game state
             player = -1 if len(np.where(state == 0)[0]) % 2 == 0 else 1
-            # print("Player {} played move ({},{})".format(player,x,y))
+
             game.play_move(player, x, y)
             state = np.array(game.board)
             
             # Check if the game has ended and calculate the reward
-            game.check_winner()
+            game.check_for_winner()
             if game.in_progress:
                 reward = 0
             elif game.winner == player:
@@ -67,4 +68,4 @@ def train_model(epochs):
             model.evaluate(np.array([state]), np.array([move]), verbose=0)
 
     print("Saving the model as 'tic_tac_toe' to ./models")
-    model.save("./models",save_format='tf')
+    model.save("./models/tictactoe",save_format='tf')

@@ -1,9 +1,9 @@
 import argparse
 import os
-import tictactoe.tictactoeAI as tictactoeAI
+import tictactoe.trainAI as trainAI
 #import connect4AI
 #import battleshipAI
-import tictactoe.playtictactoe as playtictactoe
+import tictactoe.playAI as playAI
 #import playconnect4
 #import playbattleship
 
@@ -19,12 +19,12 @@ if args.game == 'tictactoe':
     if args.train:
         if not os.path.exists('models'):
             os.makedirs('models')
-        tictactoeAI.train_model(epochs=args.epochs)
+        trainAI.train_model(epochs=args.epochs)
     elif args.play:
         if not os.path.exists('models'):
             print('Error: AI model folder not found. Please train the AI first using the --train option.')
         else:
-            playtictactoe.play_game()
+            playAI.play_game()
     else:
         parser.print_help()
 

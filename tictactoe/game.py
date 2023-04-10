@@ -25,7 +25,7 @@ class TicTacToe:
         print("{},{},{}".format(self.mapping[str(self.board[0][2])], self.mapping[str(self.board[1][2])], self.mapping[str(self.board[2][2])]))
 
     
-    def check_winner(self):
+    def check_for_winner(self):
         # If we find a winner, we set that player as the winner and stop the game
         for player in [-1, 1]:
             # Check rows for a win

@@ -1,11 +1,11 @@
 import tensorflow as tf
 import numpy as np
-from tictactoe.tictactoe import *
+from tictactoe.game import *
 
 
 def play_game():
     # Load the saved model
-    model = tf.keras.models.load_model("./models")
+    model = tf.keras.models.load_model("./models/tictactoe")
 
     # Create the game environment
     game = TicTacToe()
@@ -22,7 +22,7 @@ def play_game():
         
         # Play the player's move and update the game state
         game.play_move(1, x, y)
-        game.check_winner()
+        game.check_for_winner()
         game.print_board()
         if not game.in_progress:
             break
@@ -40,7 +40,7 @@ def play_game():
 
             # Play the model's move and update the game state
             game.play_move(-1, x, y)
-            game.check_winner()
+            game.check_for_winner()
 
     game.print_board()
     # Print the final game state and winner
