@@ -11,6 +11,12 @@ class TicTacToe:
         self.board = [[0,0,0],[0,0,0],[0,0,0]]
         self.winner = None
         
+    # Reset the game
+    def clear_board(self):
+        self.in_progress = True
+        self.board = [[0,0,0],[0,0,0],[0,0,0]]
+        self.winner = None
+        
     def play_move(self,player,x,y):
         # If the chosen spot is open, place the mark.
         if self.board[x][y] == 0:
@@ -53,10 +59,11 @@ class TicTacToe:
                 self.in_progress = False
                 return
             
-             # Check if all cells on the board are filled (i.e., a draw)
-            if all([self.board[i][j] != 0 for i in range(3) for j in range(3)]):
-                self.winner = None
-                self.in_progress = False
-                return 
+        # If nobody won, check if all cells on the board are filled (i.e., a draw)
+        if all([self.board[i][j] != 0 for i in range(3) for j in range(3)]):
+            self.winner = None
+            self.in_progress = False
+            return 
+        
         # If no winner was found, do nothing
         return
