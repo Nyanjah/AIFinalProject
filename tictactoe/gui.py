@@ -36,7 +36,7 @@ class TicTacToeGUI(tk.Tk):
 
 
         # Create a frame for the bar graph
-        self.graph_frame = tk.Frame(self)
+        self.graph_frame = tk.Frame(self,padx = 5, pady = 5, borderwidth= 5)
         self.graph_frame.pack(side="right")
 
         # Create a figure for the bar graph
@@ -63,9 +63,7 @@ class TicTacToeGUI(tk.Tk):
         self.ax.bar(x_labels, probs, align='center')
 
         # Set the axis labels and title
-        self.ax.set_xlabel('Position')
-        self.ax.set_ylabel('Probability')
-        self.ax.set_title('Probability of AI Move')
+        self.ax.set_title('Probability distribution of Agent\'s last move')
 
         # Redraw the canvas
         self.canvas.draw()
@@ -139,9 +137,27 @@ class TicTacToeGUI(tk.Tk):
 
         # Reset the message label
         self.message_label.config(text="TicTacToe AI")
+        
+        # Reset the probability graph
+        probs = [0,0,0,0,0,0,0,0,0]
+        
+        # Clear the previous bar graph
+        self.ax.clear()
+        
+        # Create a new bar graph with the probability values
+        x_labels = ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
+        self.ax.bar(x_labels, probs, align='center')
+        
+        # Set the axis labels and title
+        self.ax.set_title('Probability distribution of Agent\'s last move')
 
+        # Redraw the canvas
+        self.canvas.draw()
+        
         # Start the game
         self.player_turn = True
+        
+        
         
     def get_prob(self):
         state = np.array(self.game.board)
