@@ -7,7 +7,6 @@ import tictactoe.playAI as playAI
 #import playconnect4
 #import playbattleship
 
-
 parser = argparse.ArgumentParser()
 parser.add_argument('--game', choices=['tictactoe', 'connect4', 'battleship'], help='Select the game')
 parser.add_argument('--train', action='store_true', help='Train the game-specific AI')

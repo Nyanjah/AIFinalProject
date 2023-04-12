@@ -80,6 +80,9 @@ class TicTacToeGUI(tk.Tk):
 
             if self.game.in_progress:
                 # Get the model's move
+                # Before the AI moves, we update the graph with its output for the current board state
+                self.update_graph()
+                
                 state = np.array(self.game.board)
                 available_moves = 3*np.where(state == 0)[0] + np.where(state == 0)[1]
                 probabilities = self.model.predict(np.array([state]), verbose = 1)[0]
@@ -92,7 +95,7 @@ class TicTacToeGUI(tk.Tk):
                 self.game.play_move(-1, x, y)
                 self.game.check_for_winner()
                 self.update_board()
-                self.update_graph()
+                
                 
         # Print the final game state and winner
         if not self.game.in_progress:

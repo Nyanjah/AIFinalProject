@@ -63,9 +63,11 @@ def train_model(epochs):
             gradients = tape.gradient(loss, model.trainable_variables)
             optimizer.apply_gradients(zip(gradients, model.trainable_variables))
         
+        # TODO: Save these evaluations to a .xml file for later analysis
+        
         # Evaluate the model after every 100 episodes
-        if episode % 100 == 0:
-            model.evaluate(np.array([state]), np.array([move]), verbose=0)
+        # if episode % 100 == 0:
+        #    model.evaluate(np.array([state]), np.array([move]), verbose=0)
 
     print("Saving the model as 'tic_tac_toe' to ./models")
     model.save("./models/tictactoe",save_format='tf')
